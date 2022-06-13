@@ -3,17 +3,15 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void playGame(int n) {
-    }
 
     public static void chooseAmountOfPlayers(int option) {
         Scanner scan = new Scanner(System.in);
         if (option == 1) {
-            generateNForPlayer1();
+            playGameForPlayer1();
         }
         if (option == 2) {
-            generateNForPlayer1();
-            generateNForPlayer2();
+            playGameForPlayer1();
+            playGameForPlayer2();
         }
         while (option > 2 || option < 1) {
             System.out.println("Enter a valid input.");
@@ -22,43 +20,60 @@ public class Main {
 
     }
 
-    public static void generateNForPlayer2() {
-        Random rnd = new Random();
-        int dg1 = rnd.nextInt(9);
-        int dg2 = rnd.nextInt(9);
-        int dg3 = rnd.nextInt(9);
-        int dg4 = rnd.nextInt(9);
-        while (dg1 == dg2 || dg1 == dg3 || dg1 == dg4 || dg2 == dg3 || dg2 == dg4 || dg3 == dg4) {
-            if (dg1 == dg2 || dg2 == dg3 || dg3 == dg4) {
-                dg2 = rnd.nextInt();
-            }
-            if (dg1 == dg3 || dg2 == dg3 || dg3 == dg4) {
-                dg3 = rnd.nextInt();
-            }
-            if (dg1 == dg4 || dg2 == dg4 || dg3 == dg4) {
-                dg4 = rnd.nextInt();
-            }
-        }
+    public static void playGameForPlayer2() {
+
     }
 
-    public static void generateNForPlayer1() {
-        Scanner scan = new Scanner(System.in);
+    public static void playGameForPlayer1() {
         Random rnd = new Random();
-        int dg1 = rnd.nextInt(9);
-        int dg2 = rnd.nextInt(9);
-        int dg3 = rnd.nextInt(9);
-        int dg4 = rnd.nextInt(9);
-        while (dg1 == dg2 || dg1 == dg3 || dg1 == dg4 || dg2 == dg3 || dg2 == dg4 || dg3 == dg4) {
-            if (dg1 == dg2 || dg2 == dg3 || dg3 == dg4) {
-                dg2 = rnd.nextInt();
+        int rd1 = rnd.nextInt(9);
+        int rd2 = rnd.nextInt(9);
+        int rd3 = rnd.nextInt(9);
+        int rd4 = rnd.nextInt(9);
+        while (rd1 == rd2 || rd1 == rd3 || rd1 == rd4 || rd2 == rd3 || rd2 == rd4 || rd3 == rd4) {
+            if (rd1 == rd2 || rd2 == rd3 || rd3 == rd4) {
+                rd2 = rnd.nextInt(9);
             }
-            if (dg1 == dg3 || dg2 == dg3 || dg3 == dg4) {
-                dg3 = rnd.nextInt();
+            if (rd1 == rd3 || rd2 == rd3 || rd3 == rd4) {
+                rd3 = rnd.nextInt(9);
             }
-            if (dg1 == dg4 || dg2 == dg4 || dg3 == dg4) {
-                dg4 = rnd.nextInt();
+            if (rd1 == rd4 || rd2 == rd4 || rd3 == rd4) {
+                rd4 = rnd.nextInt(9);
             }
         }
+        System.out.println("Guess the number!");
+        Scanner scan = new Scanner(System.in);
+        int n = 0;
+        while (n > 9999 || n < 999) {
+            System.out.println("Enter a four-digit number!");
+            n = scan.nextInt();
+        }
+
+        while (n / 1000 == (n / 100) % 10 || n / 1000 == (n / 10) % 10 || n / 1000 == n % 10 || (n / 100) % 10 == (n / 10) % 10 || (n / 100) % 10 == n % 10 || (n / 10) % 10 == n % 10) {
+            System.out.println("Enter a number with different digits!");
+            n = scan.nextInt();
+
+        }
+        int d1 = n / 1000;
+        int d2 = (n / 100) % 10;
+        int d3 = (n / 10) % 10;
+        int d4 = n % 10;
+        int[] digitsArr = new int[]{d1, d2, d3, d4};
+        int[] randomDigitsArr = {rd1, rd2, rd3, rd4};
+        int cows = 0;
+        int bulls = 0;
+        for (int i = 0; i < digitsArr.length; i++) {
+            if (digitsArr[i] == randomDigitsArr[i]) {
+                bulls++;
+            }
+        }
+        for (int i = 0; i < digitsArr.length; i++) {
+            if (digitsArr[i] == rd1 || digitsArr[i] == rd2 || digitsArr[i] == rd3 || digitsArr[i] == rd4) {
+                cows++;
+            }
+        }
+        System.out.println("Cows: " + cows);
+        System.out.println("Bulls: " + bulls);
     }
 
     public static void main(String[] args) {
@@ -72,5 +87,6 @@ public class Main {
         System.out.println("Two players - press [2]");
         int option = scan.nextInt();
         chooseAmountOfPlayers(option);
+        playGameForPlayer1();
     }
 }
