@@ -3,7 +3,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void playGameForTwo() {
+
+    }
+
+    public static void playGameForOne() {
         Scanner scan = new Scanner(System.in);
         Random rnd = new Random();
         int rd1 = rnd.nextInt(9) + 1;
@@ -23,31 +27,11 @@ public class Main {
         }
         int[] rndDigitsArr = {rd1, rd2, rd3, rd4};
 
-        System.out.println("Welcome to the game Cows and Bulls!");
-        System.out.println("-----------------------------------");
-        System.out.println("Instructions: You will have to guess a four-digit number, each digit being different.\nIf your entered number contains a digit that is in the number you have to guess, you have a cow.\nIf that digit is also in the same position in the number you have to guess, you have a bull.");
-        System.out.println("-----------------------------------");
-//        System.out.println("How many people are playing?");
-//        System.out.println("Single player - press [1]");
-//        System.out.println("Two players - press [2]");
-//        int option = scan.nextInt();
-//        if (option == 1) {
-//
-//        }
-//        if (option == 2) {
-//
-//        }
-//        while (option > 2 || option < 1) {
-//            System.out.println("Enter a valid input.");
-//            option = scan.nextInt();
-//        }
-
         System.out.println("Guess the number!");
         int n = 0;
         while (n > 9999 || n < 999 || n / 1000 == (n / 100) % 10 || n / 1000 == (n / 10) % 10 || n / 1000 == n % 10 || (n / 100) % 10 == (n / 10) % 10 || (n / 100) % 10 == n % 10 || (n / 10) % 10 == n % 10) {
             System.out.println("Enter a four-digit number with different digits!");
             n = scan.nextInt();
-
         }
         while (n / 1000 != rd1 || (n / 100) % 10 != rd2 || (n / 10) % 10 != rd3 || n % 10 != rd4) {
             int[] digitsArr = {n / 1000, (n / 100) % 10, (n / 10) % 10, n % 10};
@@ -67,8 +51,35 @@ public class Main {
             System.out.println("Try again!");
             n = scan.nextInt();
             if (n / 1000 == rd1 && (n / 100) % 10 == rd2 && (n / 10) % 10 == rd3 && n % 10 == rd4) {
-                System.out.println("You win! You guessed it right! " + rd1 + "" + rd2 + "" + rd3 + "" + rd4 + " is the correct number!");
+                System.out.println("You win! " + rd1 + "" + rd2 + "" + rd3 + "" + rd4 + " is the correct number!");
             }
+            while (n > 9999 || n < 999 || n / 1000 == (n / 100) % 10 || n / 1000 == (n / 10) % 10 || n / 1000 == n % 10 || (n / 100) % 10 == (n / 10) % 10 || (n / 100) % 10 == n % 10 || (n / 10) % 10 == n % 10) {
+                System.out.println("Enter a four-digit number with different digits!");
+                n = scan.nextInt();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Welcome to the game Cows and Bulls!");
+        System.out.println("-----------------------------------");
+        System.out.println("Instructions: You will have to guess a four-digit number, each digit being different.\nIf your entered number contains a digit that is in the number you have to guess, you have a cow.\nIf that digit is also in the same position in the number you have to guess, you have a bull.");
+        System.out.println("-----------------------------------");
+        System.out.println("How many people are playing?");
+        System.out.println("Single player - press [1]");
+        System.out.println("Two players - press [2]");
+        int option = scan.nextInt();
+
+        while (option > 2 || option < 1) {
+            System.out.println("Enter a valid input.");
+            option = scan.nextInt();
+        }
+        if (option == 1) {
+            playGameForOne();
+        }
+        if (option == 2) {
+            playGameForTwo();
         }
     }
 }
