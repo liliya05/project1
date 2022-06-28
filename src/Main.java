@@ -4,7 +4,99 @@ import java.util.Scanner;
 public class Main {
 
     public static void playGameForTwo() {
+        Scanner scan = new Scanner(System.in);
+        Random rnd = new Random();
+        int pl1Rnd1 = rnd.nextInt(9) + 1;
+        int pl1Rnd2 = rnd.nextInt(9);
+        int pl1Rnd3 = rnd.nextInt(9);
+        int pl1Rnd4 = rnd.nextInt(9);
+        while (pl1Rnd1 == pl1Rnd2 || pl1Rnd1 == pl1Rnd3 || pl1Rnd1 == pl1Rnd4 || pl1Rnd2 == pl1Rnd3 || pl1Rnd2 == pl1Rnd4 || pl1Rnd3 == pl1Rnd4) {
+            if (pl1Rnd1 == pl1Rnd2 || pl1Rnd2 == pl1Rnd3 || pl1Rnd3 == pl1Rnd4) {
+                pl1Rnd2 = rnd.nextInt(9);
+            }
+            if (pl1Rnd1 == pl1Rnd3 || pl1Rnd2 == pl1Rnd3 || pl1Rnd3 == pl1Rnd4) {
+                pl1Rnd3 = rnd.nextInt(9);
+            }
+            if (pl1Rnd1 == pl1Rnd4 || pl1Rnd2 == pl1Rnd4 || pl1Rnd3 == pl1Rnd4) {
+                pl1Rnd4 = rnd.nextInt(9);
+            }
+        }
+        int[] pl1RndArr = {pl1Rnd1, pl1Rnd2, pl1Rnd3, pl1Rnd4};
+        for (int i = 0; i < pl1RndArr.length; i++) {
+            System.out.print(pl1RndArr[i]);
+        }
+        System.out.println();
 
+        Random rnd2 = new Random();
+        int pl2Rnd1 = rnd2.nextInt(9) + 1;
+        int pl2Rnd2 = rnd2.nextInt(9);
+        int pl2Rnd3 = rnd2.nextInt(9);
+        int pl2Rnd4 = rnd2.nextInt(9);
+        while (pl2Rnd1 == pl2Rnd2 || pl2Rnd1 == pl2Rnd3 || pl2Rnd1 == pl2Rnd4 || pl2Rnd2 == pl2Rnd3 || pl2Rnd2 == pl2Rnd4 || pl2Rnd3 == pl2Rnd4) {
+            if (pl2Rnd1 == pl2Rnd2 || pl2Rnd2 == pl2Rnd3 || pl2Rnd3 == pl2Rnd4) {
+                pl2Rnd2 = rnd2.nextInt(9);
+            }
+            if (pl2Rnd1 == pl2Rnd3 || pl2Rnd2 == pl2Rnd3 || pl2Rnd3 == pl2Rnd4) {
+                pl2Rnd3 = rnd2.nextInt(9);
+            }
+            if (pl2Rnd1 == pl2Rnd4 || pl2Rnd2 == pl2Rnd4 || pl2Rnd3 == pl2Rnd4) {
+                pl2Rnd4 = rnd2.nextInt(9);
+            }
+        }
+        int[] pl2RndArr = {pl2Rnd1, pl2Rnd2, pl2Rnd3, pl2Rnd4};
+        for (int i = 0; i < pl2RndArr.length; i++) {
+            System.out.print(pl2RndArr[i]);
+        }
+        System.out.println();
+
+        System.out.println("Enter name for Player 1:");
+        String player1Name = scan.next();
+        System.out.println("Enter name for Player 2:");
+        String player2Name = scan.next();
+        System.out.println("Whoever guesses their number first wins!");
+
+        System.out.println(player1Name + "'s turn");
+        int n = scan.nextInt();
+        int n2 = 0;
+        while (n > 9999 || n < 999 || n / 1000 == (n / 100) % 10 || n / 1000 == (n / 10) % 10 ||
+                n / 1000 == n % 10 || (n / 100) % 10 == (n / 10) % 10 || (n / 100) % 10 == n % 10 || (n / 10) % 10 == n % 10) {
+            System.out.println("Enter a four-digit number with different digits!");
+            n = scan.nextInt();
+        }
+        if (n / 1000 == pl1Rnd1 && (n / 100) % 10 == pl1Rnd2 && (n / 10) % 10 == pl1Rnd3 && n % 10 == pl1Rnd4) {
+            System.out.println(player1Name + " wins! " + pl1Rnd1 + "" + pl1Rnd2 + "" + pl1Rnd3 + "" + pl1Rnd4 + " is the correct number!");
+            System.exit(0);
+        }
+
+        while (n / 1000 != pl1Rnd1 || (n / 100) % 10 != pl1Rnd2 || (n / 10) % 10 != pl1Rnd3 || n % 10 != pl1Rnd4
+                && n2 / 1000 != pl2Rnd1 || (n2 / 100) % 10 != pl2Rnd2 || (n2 / 10) % 10 != pl2Rnd3 || n2 % 10 != pl2Rnd4) {
+            System.out.println(player2Name + "'s turn");
+            n2 = scan.nextInt();
+
+            while (n2 > 9999 || n2 < 999 || n2 / 1000 == (n2 / 100) % 10 || n2 / 1000 == (n2 / 10) % 10 || n2 / 1000 == n2 % 10 ||
+                    (n2 / 100) % 10 == (n2 / 10) % 10 || (n2 / 100) % 10 == n2 % 10 || (n2 / 10) % 10 == n2 % 10) {
+                System.out.println("Enter a four-digit number with different digits!");
+                n2 = scan.nextInt();
+            }
+            if (n2 / 1000 == pl2Rnd1 && (n2 / 100) % 10 == pl2Rnd2 && (n2 / 10) % 10 == pl2Rnd3 && n2 % 10 == pl2Rnd4) {
+                System.out.println(player2Name + " wins! " + pl2Rnd1 + "" + pl2Rnd2 + "" + pl2Rnd3 + "" + pl2Rnd4 + " is the correct number!");
+                break;
+            }
+
+            if (n2 / 1000 != pl2Rnd1 || (n2 / 100) % 10 != pl2Rnd2 || (n2 / 10) % 10 != pl2Rnd3 || n2 % 10 != pl2Rnd4) {
+                System.out.println(player1Name + "'s turn");
+                n = scan.nextInt();
+            }
+            if (n / 1000 == pl1Rnd1 && (n / 100) % 10 == pl1Rnd2 && (n / 10) % 10 == pl1Rnd3 && n % 10 == pl1Rnd4) {
+                System.out.println(player1Name + " wins! " + pl1Rnd1 + "" + pl1Rnd2 + "" + pl1Rnd3 + "" + pl1Rnd4 + " is the correct number!");
+                break;
+            }
+            while (n > 9999 || n < 999 || n / 1000 == (n / 100) % 10 || n / 1000 == (n / 10) % 10 || n / 1000 == n % 10
+                    || (n / 100) % 10 == (n / 10) % 10 || (n / 100) % 10 == n % 10 || (n / 10) % 10 == n % 10) {
+                System.out.println("Enter a four-digit number with different digits!");
+                n = scan.nextInt();
+            }
+        }
     }
 
     public static void playGameForOne() {
@@ -32,6 +124,9 @@ public class Main {
         while (n > 9999 || n < 999 || n / 1000 == (n / 100) % 10 || n / 1000 == (n / 10) % 10 || n / 1000 == n % 10 || (n / 100) % 10 == (n / 10) % 10 || (n / 100) % 10 == n % 10 || (n / 10) % 10 == n % 10) {
             System.out.println("Enter a four-digit number with different digits!");
             n = scan.nextInt();
+        }
+        if (n / 1000 == rd1 && (n / 100) % 10 == rd2 && (n / 10) % 10 == rd3 && n % 10 == rd4) {
+            System.out.println("You win! " + rd1 + "" + rd2 + "" + rd3 + "" + rd4 + " is the correct number!");
         }
         while (n / 1000 != rd1 || (n / 100) % 10 != rd2 || (n / 10) % 10 != rd3 || n % 10 != rd4) {
             int[] digitsArr = {n / 1000, (n / 100) % 10, (n / 10) % 10, n % 10};
