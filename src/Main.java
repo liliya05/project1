@@ -70,8 +70,26 @@ public class Main {
 
         while (n / 1000 != pl1Rnd1 || (n / 100) % 10 != pl1Rnd2 || (n / 10) % 10 != pl1Rnd3 || n % 10 != pl1Rnd4
                 && n2 / 1000 != pl2Rnd1 || (n2 / 100) % 10 != pl2Rnd2 || (n2 / 10) % 10 != pl2Rnd3 || n2 % 10 != pl2Rnd4) {
-            System.out.println(player2Name + "'s turn");
-            n2 = scan.nextInt();
+
+
+            if (n / 1000 != pl1Rnd1 || (n / 100) % 10 != pl1Rnd2 || (n / 10) % 10 != pl1Rnd3 || n % 10 != pl1Rnd4) {
+                int[] pl1DigitsArr = {n / 1000, (n / 100) % 10, (n / 10) % 10, n % 10};
+                int cows = 0;
+                int bulls = 0;
+                for (int i = 0; i < pl1DigitsArr.length; i++) {
+                    if (pl1DigitsArr[i] == pl1Rnd1 || pl1DigitsArr[i] == pl1Rnd2 || pl1DigitsArr[i] == pl1Rnd3 || pl1DigitsArr[i] == pl1Rnd4) {
+                        cows++;
+                    }
+                    if (pl1DigitsArr[i] == pl1RndArr[i]) {
+                        bulls++;
+                        cows--;
+                    }
+                }
+                System.out.println("Cows: " + cows);
+                System.out.println("Bulls: " + bulls);
+                System.out.println(player2Name + "'s turn");
+                n2 = scan.nextInt();
+            }
 
             while (n2 > 9999 || n2 < 999 || n2 / 1000 == (n2 / 100) % 10 || n2 / 1000 == (n2 / 10) % 10 || n2 / 1000 == n2 % 10 ||
                     (n2 / 100) % 10 == (n2 / 10) % 10 || (n2 / 100) % 10 == n2 % 10 || (n2 / 10) % 10 == n2 % 10) {
@@ -84,11 +102,25 @@ public class Main {
             }
 
             if (n2 / 1000 != pl2Rnd1 || (n2 / 100) % 10 != pl2Rnd2 || (n2 / 10) % 10 != pl2Rnd3 || n2 % 10 != pl2Rnd4) {
+                int[] pl2DigitsArr = {n2 / 1000, (n2 / 100) % 10, (n2 / 10) % 10, n2 % 10};
+                int cows2 = 0;
+                int bulls2 = 0;
+                for (int i = 0; i < pl2DigitsArr.length; i++) {
+                    if (pl2DigitsArr[i] == pl2Rnd1 || pl2DigitsArr[i] == pl2Rnd2 || pl2DigitsArr[i] == pl2Rnd3 || pl2DigitsArr[i] == pl2Rnd4) {
+                        cows2++;
+                    }
+                    if (pl2DigitsArr[i] == pl2RndArr[i]) {
+                        bulls2++;
+                        cows2--;
+                    }
+                }
+                System.out.println("Cows: " + cows2);
+                System.out.println("Bulls: " + bulls2);
                 System.out.println(player1Name + "'s turn");
                 n = scan.nextInt();
             }
             if (n / 1000 == pl1Rnd1 && (n / 100) % 10 == pl1Rnd2 && (n / 10) % 10 == pl1Rnd3 && n % 10 == pl1Rnd4) {
-                System.out.println(player1Name + " wins! " + pl1Rnd1 + "" + pl1Rnd2 + "" + pl1Rnd3 + "" + pl1Rnd4 + " is the correct number!");
+                System.out.println(player1Name + " wins! " + +pl1Rnd1 + "" + pl1Rnd2 + "" + pl1Rnd3 + "" + pl1Rnd4 + " is the correct number!");
                 break;
             }
             while (n > 9999 || n < 999 || n / 1000 == (n / 100) % 10 || n / 1000 == (n / 10) % 10 || n / 1000 == n % 10
