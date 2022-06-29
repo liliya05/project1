@@ -22,10 +22,6 @@ public class Main {
             }
         }
         int[] pl1RndArr = {pl1Rnd1, pl1Rnd2, pl1Rnd3, pl1Rnd4};
-        for (int i = 0; i < pl1RndArr.length; i++) {
-            System.out.print(pl1RndArr[i]);
-        }
-        System.out.println();
 
         Random rnd2 = new Random();
         int pl2Rnd1 = rnd2.nextInt(9) + 1;
@@ -44,10 +40,6 @@ public class Main {
             }
         }
         int[] pl2RndArr = {pl2Rnd1, pl2Rnd2, pl2Rnd3, pl2Rnd4};
-        for (int i = 0; i < pl2RndArr.length; i++) {
-            System.out.print(pl2RndArr[i]);
-        }
-        System.out.println();
 
         System.out.println("Enter name for Player 1:");
         String player1Name = scan.next();
@@ -120,7 +112,7 @@ public class Main {
                 n = scan.nextInt();
             }
             if (n / 1000 == pl1Rnd1 && (n / 100) % 10 == pl1Rnd2 && (n / 10) % 10 == pl1Rnd3 && n % 10 == pl1Rnd4) {
-                System.out.println(player1Name + " wins! " + +pl1Rnd1 + "" + pl1Rnd2 + "" + pl1Rnd3 + "" + pl1Rnd4 + " is the correct number!");
+                System.out.println(player1Name + " wins! " + pl1Rnd1 + "" + pl1Rnd2 + "" + pl1Rnd3 + "" + pl1Rnd4 + " is the correct number!");
                 break;
             }
             while (n > 9999 || n < 999 || n / 1000 == (n / 100) % 10 || n / 1000 == (n / 10) % 10 || n / 1000 == n % 10
@@ -189,10 +181,11 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Welcome to the game Cows and Bulls!");
-        System.out.println("-----------------------------------");
+        System.out.println("-------------------------------------");
+        System.out.println("Welcome to the game Bulls and Cows!");
+        System.out.println("-------------------------------------");
         System.out.println("Instructions: You will have to guess a four-digit number, each digit being different.\nIf your entered number contains a digit that is in the number you have to guess, you have a cow.\nIf that digit is also in the same position in the number you have to guess, you have a bull.");
-        System.out.println("-----------------------------------");
+        System.out.println("-------------------------------------");
         System.out.println("How many people are playing?");
         System.out.println("Single player - press [1]");
         System.out.println("Two players - press [2]");
