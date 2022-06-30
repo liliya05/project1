@@ -10,6 +10,8 @@ public class Main {
         int pl1Rnd2 = rnd.nextInt(9);
         int pl1Rnd3 = rnd.nextInt(9);
         int pl1Rnd4 = rnd.nextInt(9);
+
+        //generate digits from 0-9 that don't repeat for player 1
         while (pl1Rnd1 == pl1Rnd2 || pl1Rnd1 == pl1Rnd3 || pl1Rnd1 == pl1Rnd4 || pl1Rnd2 == pl1Rnd3 || pl1Rnd2 == pl1Rnd4 || pl1Rnd3 == pl1Rnd4) {
             if (pl1Rnd1 == pl1Rnd2 || pl1Rnd2 == pl1Rnd3 || pl1Rnd3 == pl1Rnd4) {
                 pl1Rnd2 = rnd.nextInt(9);
@@ -23,11 +25,18 @@ public class Main {
         }
         int[] pl1RndArr = {pl1Rnd1, pl1Rnd2, pl1Rnd3, pl1Rnd4};
 
+        for(int i = 0; i < pl1RndArr.length; i++) {
+            System.out.print(pl1RndArr[i]);
+        }
+        System.out.println();
+
         Random rnd2 = new Random();
         int pl2Rnd1 = rnd2.nextInt(9) + 1;
         int pl2Rnd2 = rnd2.nextInt(9);
         int pl2Rnd3 = rnd2.nextInt(9);
         int pl2Rnd4 = rnd2.nextInt(9);
+
+        //generate digits from 0-9 that don't repeat for player 2
         while (pl2Rnd1 == pl2Rnd2 || pl2Rnd1 == pl2Rnd3 || pl2Rnd1 == pl2Rnd4 || pl2Rnd2 == pl2Rnd3 || pl2Rnd2 == pl2Rnd4 || pl2Rnd3 == pl2Rnd4) {
             if (pl2Rnd1 == pl2Rnd2 || pl2Rnd2 == pl2Rnd3 || pl2Rnd3 == pl2Rnd4) {
                 pl2Rnd2 = rnd2.nextInt(9);
@@ -41,6 +50,11 @@ public class Main {
         }
         int[] pl2RndArr = {pl2Rnd1, pl2Rnd2, pl2Rnd3, pl2Rnd4};
 
+        for(int i = 0; i < pl2RndArr.length; i++) {
+            System.out.print(pl2RndArr[i]);
+        }
+
+        System.out.println();
         System.out.println("Enter name for Player 1:");
         String player1Name = scan.next();
         System.out.println("Enter name for Player 2:");
@@ -59,30 +73,29 @@ public class Main {
             System.out.println(player1Name + " wins! " + pl1Rnd1 + "" + pl1Rnd2 + "" + pl1Rnd3 + "" + pl1Rnd4 + " is the correct number!");
             System.exit(0);
         }
-
+        //loop turns until someone guesses their number
         while (n / 1000 != pl1Rnd1 || (n / 100) % 10 != pl1Rnd2 || (n / 10) % 10 != pl1Rnd3 || n % 10 != pl1Rnd4
                 && n2 / 1000 != pl2Rnd1 || (n2 / 100) % 10 != pl2Rnd2 || (n2 / 10) % 10 != pl2Rnd3 || n2 % 10 != pl2Rnd4) {
 
-
             if (n / 1000 != pl1Rnd1 || (n / 100) % 10 != pl1Rnd2 || (n / 10) % 10 != pl1Rnd3 || n % 10 != pl1Rnd4) {
                 int[] pl1DigitsArr = {n / 1000, (n / 100) % 10, (n / 10) % 10, n % 10};
-                int cows = 0;
-                int bulls = 0;
+                int cows1 = 0;
+                int bulls1 = 0;
                 for (int i = 0; i < pl1DigitsArr.length; i++) {
                     if (pl1DigitsArr[i] == pl1Rnd1 || pl1DigitsArr[i] == pl1Rnd2 || pl1DigitsArr[i] == pl1Rnd3 || pl1DigitsArr[i] == pl1Rnd4) {
-                        cows++;
+                        cows1++;
                     }
                     if (pl1DigitsArr[i] == pl1RndArr[i]) {
-                        bulls++;
-                        cows--;
+                        bulls1++;
+                        cows1--;
                     }
                 }
-                System.out.println("Cows: " + cows);
-                System.out.println("Bulls: " + bulls);
+                System.out.println("Cows: " + cows1);
+                System.out.println("Bulls: " + bulls1);
                 System.out.println(player2Name + "'s turn");
                 n2 = scan.nextInt();
             }
-
+            //check if player 2's input number has four digits that don't repeat
             while (n2 > 9999 || n2 < 999 || n2 / 1000 == (n2 / 100) % 10 || n2 / 1000 == (n2 / 10) % 10 || n2 / 1000 == n2 % 10 ||
                     (n2 / 100) % 10 == (n2 / 10) % 10 || (n2 / 100) % 10 == n2 % 10 || (n2 / 10) % 10 == n2 % 10) {
                 System.out.println("Enter a four-digit number with different digits!");
@@ -92,7 +105,7 @@ public class Main {
                 System.out.println(player2Name + " wins! " + pl2Rnd1 + "" + pl2Rnd2 + "" + pl2Rnd3 + "" + pl2Rnd4 + " is the correct number!");
                 break;
             }
-
+            //count bulls and cows for player 2
             if (n2 / 1000 != pl2Rnd1 || (n2 / 100) % 10 != pl2Rnd2 || (n2 / 10) % 10 != pl2Rnd3 || n2 % 10 != pl2Rnd4) {
                 int[] pl2DigitsArr = {n2 / 1000, (n2 / 100) % 10, (n2 / 10) % 10, n2 % 10};
                 int cows2 = 0;
@@ -130,6 +143,8 @@ public class Main {
         int rd2 = rnd.nextInt(9);
         int rd3 = rnd.nextInt(9);
         int rd4 = rnd.nextInt(9);
+
+        //generate digits from 0-9 that don't repeat
         while (rd1 == rd2 || rd1 == rd3 || rd1 == rd4 || rd2 == rd3 || rd2 == rd4 || rd3 == rd4) {
             if (rd1 == rd2 || rd2 == rd3 || rd3 == rd4) {
                 rd2 = rnd.nextInt(9);
@@ -142,6 +157,11 @@ public class Main {
             }
         }
         int[] rndDigitsArr = {rd1, rd2, rd3, rd4};
+
+        for(int i = 0; i < rndDigitsArr.length; i++) {
+            System.out.print(rndDigitsArr[i]);
+        }
+        System.out.println();
 
         System.out.println("Guess the number!");
         int n = 0;
