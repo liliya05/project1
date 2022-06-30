@@ -25,7 +25,7 @@ public class Main {
         }
         int[] pl1RndArr = {pl1Rnd1, pl1Rnd2, pl1Rnd3, pl1Rnd4};
 
-        for(int i = 0; i < pl1RndArr.length; i++) {
+        for (int i = 0; i < pl1RndArr.length; i++) {
             System.out.print(pl1RndArr[i]);
         }
         System.out.println();
@@ -50,7 +50,7 @@ public class Main {
         }
         int[] pl2RndArr = {pl2Rnd1, pl2Rnd2, pl2Rnd3, pl2Rnd4};
 
-        for(int i = 0; i < pl2RndArr.length; i++) {
+        for (int i = 0; i < pl2RndArr.length; i++) {
             System.out.print(pl2RndArr[i]);
         }
 
@@ -158,7 +158,7 @@ public class Main {
         }
         int[] rndDigitsArr = {rd1, rd2, rd3, rd4};
 
-        for(int i = 0; i < rndDigitsArr.length; i++) {
+        for (int i = 0; i < rndDigitsArr.length; i++) {
             System.out.print(rndDigitsArr[i]);
         }
         System.out.println();
